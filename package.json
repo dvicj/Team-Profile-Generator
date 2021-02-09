@@ -1,0 +1,26 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "An app to generate an HTML webpage with employee information.",
+  "main": "Index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dvicj/Team-Profile-Generator.git"
+  },
+  "author": "dvicj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dvicj/Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/dvicj/Team-Profile-Generator#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3",
+    "jest": "^26.6.3"
+  }
+}
