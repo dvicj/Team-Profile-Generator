@@ -235,10 +235,11 @@ function compileTeam() {
 
     for (let i=1; i<finalTeam.length; i++) {
         let object = `
+        <div class = "card-deck">
         <div class = "card">
-            <img class="card-img-top" alt="...">
-            <div class="card-body">
-                <h2 class="card-title">${finalTeam[i].name}, ${finalTeam[i].title}</h2>
+            <div class="card-body" style="width:18rem;">
+                <h2 class="card-title">${finalTeam[i].name}</h2>
+                <h4 class="card-text">${finalTeam[i].title}</h4>
                 <p class="card-text">Employee ID: ${finalTeam[i].id}</p>
                 <p class="card-text">Email: <a href="mailto:${finalTeam[i].email}">${finalTeam[i].email}</a></p>       
         `
@@ -254,10 +255,11 @@ function compileTeam() {
         }
         if (finalTeam[i].internSchool) {
             object += `
-            <p>School: ${finalTeam[i].school}</p>
+            <p>School: ${finalTeam[i].internSchool}</p>
             `
         }
         object += `
+        </div>
         </div>
         </div>
         `
@@ -271,7 +273,7 @@ function compileTeam() {
     `
     htmlArray.push(htmlEnd);
 
-    fs.writeFile("index.html", htmlArray.join(""), function (err) {
+    fs.writeFile("./dist/index.html", htmlArray.join(""), function (err) {
 
     })
 }

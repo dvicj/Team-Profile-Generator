@@ -1,23 +1,36 @@
 * {
     background-color: var(--secondary);
-    font-family: 'Quicksand', sans-serif;  
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px;  
 }
 
 :root {
     --primary: chartreuse; 
     --secondary: black;
     --tertiary: magenta; 
-
 }
 
 h1 {
     color: magenta; 
     background-color: var(--primary);
+    font-weight: 900;
 }
 
 .card, .card-body, .card-title, .card-text {
     background: var(--tertiary); 
     color: var(--primary); 
     border-radius: 5px; 
-    font-weight: 900;
+    font-weight:bold;
+}
+
+p {
+    background-color: var(--tertiary);
+}
+
+a {
+    color: var(--primary); 
+}
+
+a:hover {
+    color: var(--secondary);
 }
