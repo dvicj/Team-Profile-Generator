@@ -2,11 +2,11 @@
 
 Hello, and welcome to my README! This is for my Week 10 Challenge, which was to create a Team Profile Generator using Node.js. I learned a lot while doing this, and I am happy to be able to share my experience with you.
 
-![finished html]()
+![finished html](https://github.com/dvicj/Team-Profile-Generator/blob/main/dist/images/final%20website.png)
 
 [Link to finished index.html in my repo](https://github.com/dvicj/Team-Profile-Generator/blob/main/dist/index.html)
 
-(Video demo of application)[]
+[Video demo of application](https://drive.google.com/file/d/1xO0TgGrJcFqg5AieAtKAZvP3pi62n_ah/view?usp=sharing)
 
 It was my job to ensure my Team Profile Generator had the following features:
 
