@@ -1,36 +1,64 @@
 * {
-    background-color: var(--secondary);
-    font-family: 'Quicksand', sans-serif;
+    background-image: url("./images/wood-background.jpg");
+    background-position: center;
+    font-family: 'Special Elite', cursive;
     font-size: 18px;  
+    box-sizing: border-box;
+
 }
 
 :root {
-    --primary: chartreuse; 
-    --secondary: black;
-    --tertiary: magenta; 
+    --primary: green; 
+    --secondary: navy;  
+    --tertiary: red; 
+}
+
+div .header {
+    background-image: url("./images/felt-background.jpg");
+    text-align: center;
+    padding: 20px; 
+    margin: 10px; 
+    border-radius: 5px;
+    box-shadow: 5px 5px blue, 10px 10px red, 15px 15px green;
 }
 
 h1 {
-    color: magenta; 
-    background-color: var(--primary);
-    font-weight: 900;
+    color: beige;
+    background-image: none; 
+    font-size: 75px;
 }
 
-.card, .card-body, .card-title, .card-text {
-    background: var(--tertiary); 
-    color: var(--primary); 
-    border-radius: 5px; 
-    font-weight:bold;
+div {
+    background-image: none; 
 }
 
-p {
-    background-color: var(--tertiary);
+div .info {
+    background-image: url("./images/felt-background.jpg");
+    box-sizing: content-box;
+    padding: 10px; 
+    margin: 10px; 
+    border-radius: 5px;
+    box-shadow: 5px 5px blue, 10px 10px red, 15px 15px green;
 }
 
-a {
-    color: var(--primary); 
+p, h2, h4, a {
+background-image: none;
+color:beige;
+text-align: center;
+white-space: nowrap;
 }
 
 a:hover {
-    color: var(--secondary);
+    color: var(--primary);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+}
+
+footer span {
+    color: navy; 
+    background-image: none;
+    font-weight: bolder;
 }

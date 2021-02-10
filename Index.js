@@ -40,7 +40,7 @@ function promptManager() {
         {
             type: 'input',
             name: 'managerEmail',
-            message: "Please enter the manager's email.",
+            message: "Please enter your manager's email.",
             validate: managerEmail => {
                 if(managerEmail) {
                     return true; 
@@ -53,7 +53,7 @@ function promptManager() {
         {
             type: 'input',
             name: 'managerNumber',
-            message: "Please enter the manager's office number.",
+            message: "Please enter your manager's office number.",
             validate: managerNumber => {
                 if(managerNumber) {
                     return true; 
@@ -70,28 +70,28 @@ function promptManager() {
         const number = data.managerNumber;
         const teamMember = new Manager(name, id, email, number);
         finalTeam.push(teamMember);
-        addTeamMembers(); 
+        promptTeamMembers(); 
     })
 }; 
 
-function addTeamMembers() {
+function promptTeamMembers() {
     inquirer.prompt ([
         {
             type: "list",
             message: "Would you like to add more team members?",
-            choices: ["Yes, add an engineer", "Yes, add an intern", "No, my team is complete"],
+            choices: ["Yes, add an engineer.", "Yes, add an intern.", "No, my team is complete!"],
             name: "addMemberData"
         }
     ]).then(function(data){
         switch(data.addMemberData) {
-            case "Yes, add an engineer":
+            case "Yes, add an engineer.":
                 promptEngineer(); 
                 break;
-            case "Yes, add an intern":
+            case "Yes, add an intern.":
                 promptIntern(); 
                 break; 
-            case "No, my team is complete":
-                compileTeam(); 
+            case "No, my team is complete!":
+                completeTeam(); 
                 break; 
         }
     });
@@ -116,7 +116,7 @@ function promptEngineer() {
         {
             type: 'input', 
             name: 'engineerEmail', 
-            message: "Please enter the engineer's email.",
+            message: "Please enter your engineer's email.",
             validate: engineerEmail => {
                 if(engineerEmail) {
                     return true; 
@@ -148,7 +148,7 @@ function promptEngineer() {
         const github = data.engineerGit; 
         const teamMember = new Engineer(name, id, email, github);
         finalTeam.push(teamMember);
-        addTeamMembers(); 
+        promptTeamMembers(); 
     }); 
 };
 
@@ -171,7 +171,7 @@ function promptIntern() {
         {
             type: 'input', 
             name: 'internEmail', 
-            message: "Please enter the interns's email.",
+            message: "Please enter your interns's email.",
             validate: internEmail => {
                 if(internEmail) {
                     return true; 
@@ -202,15 +202,15 @@ function promptIntern() {
         const school = data.internSchool; 
         const teamMember = new Intern(name, id, email, school);
         finalTeam.push(teamMember); 
-        addTeamMembers(); 
+        promptTeamMembers(); 
     })
 };
 
-function compileTeam() {
+function completeTeam() {
     console.log("*****We're compiling your team now!*****");
 
-    const htmlArray = []; 
-    const htmlBeginning = `
+    const htmlFileArray = []; 
+    const htmlHead = `
 
     <!DOCTYPE html>
     <html lang="en">
@@ -222,60 +222,69 @@ function compileTeam() {
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     </head>
     <body>
-        <nav class="navbar sticky-top navbar-light" style="background-color:chartreuse;">
-            <h1>
-                ${finalTeam[0]}
-            </h1>
-        </nav>
+        <div class="container">
+            <div class= "row align-items-center">
+                <div class="col-12 header">
+                    <h1>
+                        ${finalTeam[0]}
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class = "container">
+        <div class = "row align-items-center">
     `
-    htmlArray.push(htmlBeginning);
+    htmlFileArray.push(htmlHead);
 
     for (let i=1; i<finalTeam.length; i++) {
-        let object = `
-        <div class = "card-deck">
-        <div class = "card">
-            <div class="card-body" style="width:18rem;">
-                <h2 class="card-title">${finalTeam[i].name}</h2>
-                <h4 class="card-text">${finalTeam[i].title}</h4>
-                <p class="card-text">Employee ID: ${finalTeam[i].id}</p>
-                <p class="card-text">Email: <a href="mailto:${finalTeam[i].email}">${finalTeam[i].email}</a></p>       
+        let body = `
+            <div class="col info">
+                <h2>${finalTeam[i].name}</h2>
+                <h4>${finalTeam[i].title}</h4>
+                <p>Employee ID: ${finalTeam[i].id}</p>
+                <p>Email: <a href="mailto:${finalTeam[i].email}">${finalTeam[i].email}</a></p>       
         `
         if (finalTeam[i].managerNumber) {
-            object += `
-            <p>Number: ${finalTeam[i].managerNumber}</p>
+            body += `
+            <p> Office Number: ${finalTeam[i].managerNumber}</p>
             `
         }
         if (finalTeam[i].engineerGit) {
-            object += `
-            <p>GitHub: <a href="https://github.com/${finalTeam[i].engineerGit}"> ${finalTeam[i].engineerGit}</a></p>
+            body += `
+            <p>GitHub: <a href="https://github.com/${finalTeam[i].engineerGit}" target="_blank"> ${finalTeam[i].engineerGit}</a></p>
             `
         }
         if (finalTeam[i].internSchool) {
-            object += `
+            body += `
             <p>School: ${finalTeam[i].internSchool}</p>
             `
         }
-        object += `
-        </div>
-        </div>
-        </div>
+        body += `
+            </div>
         `
-        htmlArray.push(object); 
+        htmlFileArray.push(body); 
     }
-    const htmlEnd = `
+    const htmlFoot = `
+        </div>
+        </div>
         <footer>
         <span> Made with love in ${new Date().getFullYear()} for ${finalTeam[0]}</span>
+        </footer>
         </body>
         </html>
     `
-    htmlArray.push(htmlEnd);
+    htmlFileArray.push(htmlFoot);
 
-    fs.writeFile("./dist/index.html", htmlArray.join(""), function (err) {
-
+    fs.writeFile("./dist/index.html", htmlFileArray.join(""), err => {
+        if(err) {
+            console.log(err);
+            return; 
+        }
+        console.log("Page created! Check out index.html in the 'dist' folder to see it!");
     })
-}
+};
 
 promptStart(); 
